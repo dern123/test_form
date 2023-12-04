@@ -1,1 +1,38 @@
-{}
+{
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.9",
+    "connect-mongo": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "http": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.2",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "validator": "^13.11.0"
+  },
+  "name": "test_form",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm start --prefix client\" \"nodemon app.js\"",
+    "serv": "cross-env NODE_ENV=development concurrently \"nodemon app.js \"",
+    "start": "cross-env NODE_ENV=production node app.js",
+    "build": "npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dern123/test_form.git"
+  },
+  "author": "Strizhalov Denis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dern123/test_form/issues"
+  },
+  "homepage": "https://github.com/dern123/test_form#readme",
+  "description": ""
+}
