@@ -1,0 +1,8 @@
+<section class="bodypage__container">
+    <div class="bodypage__container--content">
+        <h1 class="bodypage__heading" *ngIf="headingPageShow" [title]="headingPage">{{headingPage}}</h1>
+        <diV class="content__wrapper">
+            <ng-content></ng-content>
+        </diV>
+    </div>
+</section>

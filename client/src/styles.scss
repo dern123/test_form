@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+.container__form-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container__form-shadow{
+    box-shadow: 0px 0px 10px 1px white;
+}
+.container__form-border{
+    border: none;
+    border-radius: 8px;
+    animation: mymove 1.5s infinite;
+}
+
+@keyframes mymove {
+  0% {box-shadow: 0px 0px 5px 1px #ffffff;}
+  10% {box-shadow: 0px 0px 6px 1px #ffffff;}
+  20% {box-shadow: 0px 0px 7px 1px #ffffff;}
+  30% {box-shadow: 0px 0px 8px 1px #ffffff;}
+  40% {box-shadow: 0px 0px 9px 1px #ffffff;}
+  50% {box-shadow: 0px 0px 10px 1px #ffffff;}
+  60% {box-shadow: 0px 0px 9px 1px #ffffff;}
+  70% {box-shadow: 0px 0px 8px 1px #ffffff;}
+  80% {box-shadow: 0px 0px 7px 1px #ffffff;}
+  90% {box-shadow: 0px 0px 6px 1px #ffffff;}
+  100% {box-shadow: 0px 0px 5px 1px #ffffff;}
+}
+// @keyframes mymove {
+//     50% {box-shadow: 0px 0px 5px 0px #ffffff;}
+//   }

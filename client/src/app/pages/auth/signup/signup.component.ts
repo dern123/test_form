@@ -1,7 +1,7 @@
 import { SignupService } from './signup.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms"
-import { CustomValidators } from 'src/app/components/providers/CustomValidators';
+import { CustomValidators } from '../../../components/providers/CustomValidators';
 
 @Component({
   selector: 'app-signup',
