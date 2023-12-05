@@ -1,0 +1,25 @@
+.auth{
+    height: 100vh;
+}
+.auth form{
+    padding: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.auth__container--form{
+    display: flex;
+    flex-flow: column-reverse
+}
+.auth__container--form input,
+.auth__container--form select{
+    width: 100%;
+    padding: 5px;
+}
+.error__border{
+    border: 1px solid red;
+}
+.success__border{
+    border: 1px solid green;
+}

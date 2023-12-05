@@ -1,0 +1,31 @@
+import { LoginService } from 'src/app/pages/auth/login/login.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
+})
+export class HeaderComponent implements OnInit {
+
+  constructor(private loginService: LoginService, private router: Router) { }
+  public user_login: boolean = false;
+  public open: boolean = false;
+  
+  openMenu(){
+    this.open = !this.open;
+  }
+  
+  return(){
+    this.router.navigate(['../client']);
+  }
+
+  ngOnInit(): void {
+    if(!!this.loginService.getToken()) {
+      console.log("🚀 ~ file: header.component.ts:26 ~ HeaderComponent ~ ngOnInit ~ this.loginService.isLoggedIn:", this.loginService.isLoggedIn)
+      this.user_login = true;
+    }
+  }
+
+}

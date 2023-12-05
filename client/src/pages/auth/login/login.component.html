@@ -1,0 +1,18 @@
+<app-header></app-header>
+<div class="auth">
+    <form [formGroup]="formLogin" (submit)="submit()">
+        <div class="auth__container--form">
+            <input type="text" formControlName="login" placeholder="Login" 
+            [ngClass]="formLogin.get('login')?.invalid && formLogin.get('login')?.touched ? 'error__border' : ''" id="login">
+            <label for="login">Login</label>
+        </div>
+        <div class="auth__container--form">
+            <input type="password" formControlName="password" placeholder="Password" 
+            [ngClass]="formLogin.get('password')?.invalid && formLogin.get('password')?.touched ? 'error__border' : ''" id="password">
+            <label for="password">Password</label>
+        </div>
+
+        <div class="auth__container--form">
+            <button [disabled]="formLogin.invalid" type="submit">Login</button>
+        </div>
+    </form>

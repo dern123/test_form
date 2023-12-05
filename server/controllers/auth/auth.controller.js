@@ -4,12 +4,13 @@ const bcrypt = require("bcryptjs");
 const handler = require("../../utils/responseHendler");
 const jwt = require("jsonwebtoken");
 const validator = require("validator");
-const UserRolesModel = require("../../models/UserRoles");
+const CounterSchemaModel = require("../../models/CounterSchema");
 const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.signup = async(req, res) => {
     try{
         const {login, email, password, telegram, gender } = req.body;
+
         const active = false;
         const userRoleId = false;
         const checkUser = await UsersModel.findOne({ email });
@@ -54,15 +55,13 @@ exports.signup = async(req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 12);
-        let defaultRole = await UserRolesModel.findOne({ name: "Client" });
-
+        
         const user = new UsersModel({
             email,
             login,
             password: hashedPassword,
             telegram,
             gender,
-            userRoleId: userRoleId ? userRoleId : defaultRole._id,
             userStatus: {
                 name: "NOT_SUCCESS",
                 description: "Not success",

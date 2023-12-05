@@ -1,0 +1,15 @@
+<header class="header">
+    <div class="burger__container" [ngClass]="open ? 'open__menu' : ''" (click)="openMenu()">
+        <span class="top"></span>
+        <span class="middle"></span>
+        <span class="down"></span>
+    </div>
+    <div *ngIf="open" class="navbar">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div>
+        <a *ngIf="!user_login" routerLink="/auth/login" href="/auth/login" class="header__btn">Login</a>
+        <a *ngIf="!user_login" routerLink="/auth/signup" href="/auth/signup" class="header__btn">Signup</a>
+        <a routerLink="/client" href="/client" *ngIf="user_login" class="header__btn">Return</a>
+    </div>
+</header>

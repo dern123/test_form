@@ -13,20 +13,12 @@ const schema = new Schema({
         updatedAt:    {type:Date, default: new Date()},
     },
     active:         {type: Boolean},
-    userRoleId:     {type: Types.ObjectId, ref: "user_roles"},
     country:        {type: String},
     gender:         {type: String},
     telegram:       {type: String},
-    teamIds:         [{
-        teamId:           {type: Types.ObjectId, ref: "Teams"},
-        accepted:         {type: Boolean, default: false},
-        createdAt:        {type: Date, default: new Date()},
-    }],
     imgServerPath:  {type: String, trim: true, default: ""},
     acceptEmail:    {type: Boolean, required: true, default: false},
-    trackerUrl:     {type: String, default: null}
+    id:             {type: Number}
 }, { timestamps: true });
-
-schema.plugin(autoIncrement.plugin, { model: 'Users', field: 'id' });
 
 module.exports = model("Users", schema);
