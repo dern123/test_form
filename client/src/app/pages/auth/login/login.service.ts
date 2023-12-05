@@ -30,7 +30,11 @@ export class LoginService {
   }
 
   getToken() {
-    return localStorage.getItem('auth-token')
+    let get = null;
+    if (typeof localStorage !== 'undefined') {
+      get = localStorage.getItem('auth-token');
+    }
+    return get;
   }
 
   isLoggedIn() {

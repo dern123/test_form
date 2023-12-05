@@ -9,11 +9,10 @@ import { CustomValidators } from '../../../components/providers/CustomValidators
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
   constructor(private signupService: SignupService) {
-
   }
-
+  public signupSuccess: boolean = false;
+  public signupError: boolean = false;
   public formRegistration: FormGroup = new FormGroup(
     {
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -34,19 +33,31 @@ export class SignupComponent implements OnInit {
   }
   submit(){
     const { login, email, name, gender, telegram, password } = this.f;
-
       this.signupService.signup(login.value, email.value, name.value, gender.value, telegram.value, password.value)
-      .subscribe({
-        next: data => {
-        console.log("🚀 ~ file: signup.component.ts:38 ~ SignupComponent ~ .subscribe ~ data:", data)
+      .subscribe((data: any) => {
+          console.log("🚀 ~ file: signup.component.ts:39 ~ SignupComponent ~ submit ~ data:", data)
           if (data.status == true) {
-
+            this.signupSuccess = !this.signupSuccess;
           }
           else{
-
+            this.signupError = !this.signupError;
           }
-        },
-      });
+        }
+      //   {
+      //   next: data => {
+      //   console.log("🚀 ~ file: signup.component.ts:38 ~ SignupComponent ~ .subscribe ~ data:", data)
+      //     if (data.status == true) {
+      //       this.signupSuccess = !this.signupSuccess;
+      //     }
+      //     else{
+      //       this.signupError = !this.signupError;
+      //     }
+      //   },
+      //   error: data => {
+      //     console.log("🚀 ~ file: signup.component.ts:50 ~ SignupComponent ~ submit ~ data:", data)
+      //   }
+      // }
+      );
   }
 
   ngOnInit(): void {

@@ -10,6 +10,7 @@ const ObjectId = require("mongoose").Types.ObjectId;
 exports.signup = async(req, res) => {
     try{
         const {login, email, password, telegram, gender } = req.body;
+        console.log("🚀 ~ file: auth.controller.js:13 ~ exports.signup=async ~  req.body:",  req.body)
 
         const active = false;
         const userRoleId = false;
