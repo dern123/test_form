@@ -4,7 +4,7 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HeaderModule } from './components/header/header.module';
 import { TokenInterceptor } from './services/token.interceptor';
 
@@ -25,8 +25,7 @@ import { TokenInterceptor } from './services/token.interceptor';
       multi: true,
       useClass: TokenInterceptor,
     },
-    provideClientHydration(),
-    provideHttpClient()
+    provideClientHydration()
   ],
   bootstrap: [AppComponent]
 })

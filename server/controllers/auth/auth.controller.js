@@ -9,13 +9,14 @@ const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.signup = async(req, res) => {
     try{
-        const {login, email, password, telegram, gender } = req.body;
-        console.log("🚀 ~ file: auth.controller.js:13 ~ exports.signup=async ~  req.body:",  req.body)
+        const {login, email, name, password, telegram, gender } = req.body;
 
         const active = false;
         const userRoleId = false;
         const checkUser = await UsersModel.findOne({ email });
         const checkLogin = await UsersModel.findOne({ login });
+        const userAll = (await UsersModel.find()).length-1;
+        console.log("🚀 ~ file: auth.controller.js:20 ~ exports.signup=async ~ userAll:", userAll)
         const token = config.get("TOKEN_BOT");
         
         if (!login && !password && !email){
@@ -60,6 +61,7 @@ exports.signup = async(req, res) => {
         const user = new UsersModel({
             email,
             login,
+            fullName: name,
             password: hashedPassword,
             telegram,
             gender,
@@ -67,7 +69,8 @@ exports.signup = async(req, res) => {
                 name: "NOT_SUCCESS",
                 description: "Not success",
             },
-            active
+            active,
+            id: userAll
         })
         await user.save()
         return handler.positiveResponse(res,{message: "successRegistration"},req);
