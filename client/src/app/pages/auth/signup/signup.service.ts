@@ -11,7 +11,7 @@ const httpOptions = {
 export class SignupService {
 
   constructor(private http: HttpClient) { }
-  private URL = "api/auth/"
+  private URL = "/api/auth/"
 
   signup(login: string, email: string, name: string, gender:string, telegram: string, password: string ): Observable<any>{      
     return this.http.post<{data: any, status: boolean}>(

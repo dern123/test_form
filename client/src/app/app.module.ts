@@ -7,10 +7,12 @@ import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HeaderModule } from './components/header/header.module';
 import { TokenInterceptor } from './services/token.interceptor';
+import { HomeComponent } from './pages/client/home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

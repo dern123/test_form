@@ -35,8 +35,9 @@ export class SignupComponent implements OnInit {
     const { login, email, name, gender, telegram, password } = this.f;
       this.signupService.signup(login.value, email.value, name.value, gender.value, telegram.value, password.value)
       .subscribe((data: any) => {
-          console.log("🚀 ~ file: signup.component.ts:39 ~ SignupComponent ~ submit ~ data:", data)
-          if (data.status == true) {
+          if (data.status) {
+            console.log("🚀 ~ file: signup.component.ts:38 ~ SignupComponent ~ .subscribe ~ data:", data)
+
             this.signupSuccess = !this.signupSuccess;
           }
           else{

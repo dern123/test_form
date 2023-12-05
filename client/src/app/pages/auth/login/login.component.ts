@@ -10,9 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private router: Router,
-    private route: ActivatedRoute) {
-
+  constructor(private loginService: LoginService, private router: Router) {
   }
 
   public formLogin: FormGroup = new FormGroup(
@@ -26,24 +24,12 @@ export class LoginComponent implements OnInit {
     const {login, password} = this.formLogin.value;
     this.loginService.login(login, password )
     .subscribe((data: any)=> {
-      if(data.data.permissions){
-        if (data.data.permissions.permissions.client.access 
-          && data.data.permissions.permissions.admin.access) {
-            this.router.navigate(['/admin'])
-        }
-        if (data.data.permissions.permissions.client.access 
-          && !data.data.permissions.permissions.admin.access) {
-          this.router.navigate(['/client'])
-        }
-        if (data.data.permissions.permissions.admin.access
-          && data.data.permissions.permissions.client.access) {
-          this.router.navigate(['/admin'])
-        }
+      if(data.status){
+        this.router.navigate(["/home"])
       }
     })
   }
   
   ngOnInit(): void {
-    
   }
 }

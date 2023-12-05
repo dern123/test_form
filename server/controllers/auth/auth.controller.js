@@ -1,5 +1,6 @@
 const UsersModel = require("../../models/Users");
 const config = require("config");
+const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
 const handler = require("../../utils/responseHendler");
 const jwt = require("jsonwebtoken");
@@ -7,6 +8,34 @@ const validator = require("validator");
 const CounterSchemaModel = require("../../models/CounterSchema");
 const ObjectId = require("mongoose").Types.ObjectId;
 
+async function mailer(email){
+    try{
+    const userEmail = email;
+
+    // Налаштування Nodemailer
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'mail@gmail.com',
+        pass: 'pass',
+      },
+    });
+
+    // Відправлення електронного листа
+    const mailOptions = {
+      from: 'mail@gmail.com',
+      to: userEmail,
+      subject: 'Ви успішно зареєстровані',
+      text: 'Вітаємо! Ви успішно зареєстровані у нашому додатку.',
+    };
+
+    await transporter.sendMail(mailOptions);
+
+  } catch (error) {
+    console.error('Помилка реєстрації:', error);
+    res.status(500).json({ error: 'Внутрішня помилка сервера' });
+  }
+}
 exports.signup = async(req, res) => {
     try{
         const {login, email, name, password, telegram, gender } = req.body;
@@ -72,6 +101,7 @@ exports.signup = async(req, res) => {
             active,
             id: userAll
         })
+        mailer(email);
         await user.save()
         return handler.positiveResponse(res,{message: "successRegistration"},req);
     }
@@ -90,9 +120,7 @@ exports.login = async(req, res) => {
         }
 
         const user = await UsersModel.findOne({ login })
-        .populate({path:"userRoleId", select:"name"})
-        .select("userStatus active login password userRoleId");
-        console.log("🚀 user:", user)
+        .select("userStatus active login password ");
 
         if(!user){
             return handler.errorMessage(res, "notFound");
@@ -107,19 +135,15 @@ exports.login = async(req, res) => {
             return handler.errorMessage(res, "passwordWrong");
         }
 
-        const token = jwt.sign({userId: user._id, role: user.userRoleId.name, teamIds: user.teamIds}, config.get("JWR_TOKEN"))
-        const permissions = await UserRolesModel.findById(user.userRoleId).select(
-            "permissions"
-        );
+        const token = jwt.sign({userId: user._id}, config.get("JWR_TOKEN"))
+
 
         req.session.user = {
             id: user._id,
             login: user.login,
-            permissions: permissions.permissions,
-            teamIds: user.teamIds  
         }
 
-        return handler.positiveResponse(res, { token, permissions, userInfo: { login: user.login} }, req);
+        return handler.positiveResponse(res, { token, userInfo: { login: user.login} }, req);
     }   
     catch(e){
         console.log("error", e);

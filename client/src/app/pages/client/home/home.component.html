@@ -1,0 +1,6 @@
+<a *ngIf="user_login" routerLink="/auth/login" href="/auth/login" class="header__btn">Return</a>
+<div>
+    <h1 *ngIf="user_login">Welcome User</h1>
+    <h1 *ngIf="!user_login">Welcome Goust </h1>
+    <a *ngIf="!user_login" routerLink="/auth/login" href="/auth/login" class="header__btn">Login</a>
+</div>

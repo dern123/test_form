@@ -5,8 +5,9 @@
         <span class="down"></span>
     </div> -->
     <div>
-        <a *ngIf="!user_login" routerLink="/auth/login" href="/auth/login" class="header__btn">Login</a>
-        <a *ngIf="!user_login" routerLink="/auth/signup" href="/auth/signup" class="header__btn">Signup</a>
-        <a routerLink="/auth/login" href="/auth/login" *ngIf="user_login" class="header__btn">Return</a>
+        <a  routerLink="/auth/login" href="/auth/login" class="header__btn">Login</a>
+        <a  routerLink="/auth/signup" href="/auth/signup" class="header__btn">Signup</a>
+        <a routerLink="/home" href="/home" class="header__btn">Home</a>
+        <!-- <a routerLink="/auth/login" href="/auth/login" *ngIf="user_login" class="header__btn">Return</a> -->
     </div>
 </header>
