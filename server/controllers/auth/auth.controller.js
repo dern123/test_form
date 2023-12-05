@@ -33,7 +33,6 @@ async function mailer(email){
 
   } catch (error) {
     console.error('Помилка реєстрації:', error);
-    res.status(500).json({ error: 'Внутрішня помилка сервера' });
   }
 }
 exports.signup = async(req, res) => {
