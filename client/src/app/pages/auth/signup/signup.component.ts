@@ -29,14 +29,24 @@ export class SignupComponent implements OnInit {
       // validator: CustomValidators("password", "passwordRepeat")
     }
   )
-
+  get f() {
+    return this.formRegistration.controls;
+  }
   submit(){
-    console.log("🚀 ~ file: signup.component.ts:35 ~ SignupComponent ~ submit ~ this.formRegistration:", this.formRegistration)
+    const { login, email, name, gender, telegram, password } = this.f;
 
-      this.signupService.signup(this.formRegistration.value)
-      .subscribe((data: any)=> {
+      this.signupService.signup(login.value, email.value, name.value, gender.value, telegram.value, password.value)
+      .subscribe({
+        next: data => {
         console.log("🚀 ~ file: signup.component.ts:38 ~ SignupComponent ~ .subscribe ~ data:", data)
-      })
+          if (data.status == true) {
+
+          }
+          else{
+
+          }
+        },
+      });
   }
 
   ngOnInit(): void {

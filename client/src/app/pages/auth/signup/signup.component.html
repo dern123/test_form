@@ -1,49 +1,52 @@
 <app-header></app-header>
 <div class="auth">
-    <div class="container__form-center container__form-shadow container__form-border">
-        <form [formGroup]="formRegistration" (submit)="submit()">
-            <div class="auth__container--form">
-                <input type="email" formControlName="email" placeholder="Email"
-                [ngClass]="formRegistration.get('email')?.invalid && formRegistration.get('email')?.touched ? 'error__border' : ''" id="email">
-                <label for="email">Email</label>
-            </div>
-            <div class="auth__container--form">
-                <input type="text" formControlName="login" placeholder="Login" 
-                [ngClass]="formRegistration.get('login')?.invalid && formRegistration.get('login')?.touched ? 'error__border' : ''" id="login">
-                <label for="login">Login</label>
-            </div>
-            <div class="auth__container--form">
-                <input type="text" formControlName="name" placeholder="Name" 
-                [ngClass]="formRegistration.get('name')?.invalid && formRegistration.get('name')?.touched ? 'error__border' : ''" id="name">
-                <label for="name">Name</label>
-            </div>
-            <div class="auth__container--form">
-                <select class="w-100" formControlName="gender" id="gender" placeholder="Gender"
-                [ngClass]="formRegistration.get('telegram')?.invalid && formRegistration.get('telegram')?.touched ? 'error__border' : ''">
-                    <option value="man">Man</option>
-                    <option value="woman">Woman</option>
-                    <option value="other">Other</option>
-                </select>
-                <label for="gender">Gender</label>
-            </div>
-            <div class="auth__container--form">
-                <input type="text" formControlName="telegram" placeholder="Telegram" 
-                [ngClass]="formRegistration.get('telegram')?.invalid && formRegistration.get('telegram')?.touched ? 'error__border' : ''" id="telegram">
-                <label for="telegram">Telegram</label>
-            </div>
-            <div class="auth__container--form">
-                <input class="form-control" type="password" formControlName="password" placeholder="Password" 
-                [ngClass]="formRegistration.get('password')?.invalid && formRegistration.get('password')?.touched ? 'error__border' : ''" id="password">
-                <label for="password">Password</label>
-            </div>
-            <div class="auth__container--form">
-                <input class="form-control mt-3" type="password" formControlName="passwordRepeat" placeholder="Password Repeat" 
-                [ngClass]="formRegistration.get('passwordRepeat')?.invalid && formRegistration.get('passwordRepeat')?.touched ? 'error__border' : ''" id="passwordRepeat">
-                <label for="passwordRepeat">Password Repeat</label>
-            </div>
-            <div class="auth__container--form">
-                <button [disabled]="formRegistration.invalid" class="btn btn-success" type="submit">Registration</button>
-            </div>
-        </form>
+    <div class="container__form-center">
+        <div class="form_auth container__form-shadow container__form-border">
+            <form [formGroup]="formRegistration" (submit)="submit()">
+                <h1>Signup</h1>
+                <div class="auth__container--form">
+                    <input type="email" formControlName="email" placeholder="Email"
+                    [ngClass]="formRegistration.get('email')?.invalid && formRegistration.get('email')?.touched ? 'error__border' : ''" id="email">
+                    <label for="email" class="bg-primary">Email</label>
+                </div>
+                <div class="auth__container--form">
+                    <input type="text" formControlName="login" placeholder="Login" 
+                    [ngClass]="formRegistration.get('login')?.invalid && formRegistration.get('login')?.touched ? 'error__border' : ''" id="login">
+                    <label for="login">Login</label>
+                </div>
+                <div class="auth__container--form">
+                    <input type="text" formControlName="name" placeholder="Name" 
+                    [ngClass]="formRegistration.get('name')?.invalid && formRegistration.get('name')?.touched ? 'error__border' : ''" id="name">
+                    <label for="name">Name</label>
+                </div>
+                <div class="auth__container--form">
+                    <select class="w-100" formControlName="gender" id="gender" placeholder="Gender"
+                    [ngClass]="formRegistration.get('telegram')?.invalid && formRegistration.get('telegram')?.touched ? 'error__border' : ''">
+                        <option value="man">Man</option>
+                        <option value="woman">Woman</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <label for="gender">Gender</label>
+                </div>
+                <div class="auth__container--form">
+                    <input type="text" formControlName="telegram" placeholder="Telegram" 
+                    [ngClass]="formRegistration.get('telegram')?.invalid && formRegistration.get('telegram')?.touched ? 'error__border' : ''" id="telegram">
+                    <label for="telegram">Telegram</label>
+                </div>
+                <div class="auth__container--form">
+                    <input class="form-control" type="password" formControlName="password" placeholder="Password" 
+                    [ngClass]="formRegistration.get('password')?.invalid && formRegistration.get('password')?.touched ? 'error__border' : ''" id="password">
+                    <label for="password">Password</label>
+                </div>
+                <div class="auth__container--form">
+                    <input class="form-control mt-3" type="password" formControlName="passwordRepeat" placeholder="Password Repeat" 
+                    [ngClass]="formRegistration.get('passwordRepeat')?.invalid && formRegistration.get('passwordRepeat')?.touched ? 'error__border' : ''" id="passwordRepeat">
+                    <label for="passwordRepeat">Password Repeat</label>
+                </div>
+                <div class="auth__container--form">
+                    <button [disabled]="formRegistration.invalid" class="btn btn-success" type="submit">Registration</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

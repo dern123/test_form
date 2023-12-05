@@ -1,3 +1,6 @@
+label{
+    color: #ffffff79;
+}
 .auth{
     height: 100vh;
 }
@@ -14,7 +17,7 @@
 }
 .auth__container--form input,
 .auth__container--form select{
-    width: 100%;
+    max-width: 100%;
     padding: 5px;
 }
 .error__border{
