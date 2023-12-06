@@ -2,7 +2,7 @@
 <div class="auth">
     <div class="container__form-center">
         <div class="form_auth container__form-shadow container__form-border">
-            <form [formGroup]="formRegistration" (submit)="submit()">
+            <form [formGroup]="formRegistration" (submit)="submit()" *ngIf="!this.signupSuccess">
                 <h1>Signup</h1>
                 <div class="auth__container--form">
                     <input type="email" formControlName="email" placeholder="Email"
@@ -47,6 +47,23 @@
                     <button [disabled]="formRegistration.invalid" class="btn btn-success" type="submit">Registration</button>
                 </div>
             </form>
+            <div *ngIf="this.signupSuccess" class="form_success">
+                <h2>Your registration success</h2>
+                <p class="signup-icon--success" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                      <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                    </svg>
+                </p>
+                <a routerLink="/auth/login" href="/auth/login" class="header__btn">Login</a>
+            </div>
+        </div>
+        <div class="form_success form__negative-message" *ngIf="this.signupError">
+            <div>
+                <i (click)="closeMessage()">Close</i>
+                <h2>Your registration success</h2>
+                <p>Wrong email or login or password</p>
+            </div>
+
         </div>
     </div>
 </div>

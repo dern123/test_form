@@ -1,7 +1,20 @@
 label{
     color: #ffffff79;
 }
+a{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: x-large;
+    &:hover{
+        text-decoration: underline;
+    }
+}
+h2{
+    color:#ffffff;
+    text-align: center;
+}
 .auth{
+    position: relative;
     height: 100vh;
 }
 .auth form{
@@ -26,4 +39,40 @@ label{
 }
 .success__border{
     border: 1px solid green;
+}
+.signup-icon--success{
+    color:#1BBD0D;
+    font-size: 22px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+}
+.form_success{
+    padding: 10px;
+}
+.form__negative-message{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    z-index: 99;
+    & p{
+        color: red;
+    }
+    & i{
+        font-size: 16px;
+        color: #fbe1e1de;
+        border: 1px solid red;
+        transition: all ease-out .3s;
+        cursor: pointer;
+        &:hover{
+            border:none;
+        }
+    }
 }
