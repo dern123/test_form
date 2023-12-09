@@ -42,7 +42,6 @@
   "devDependencies": {
     "@angular/cli": "^16.2.6",
     "concurrently": "^8.2.2",
-    "nodemon": "^3.0.2",
-    "nodejs":"20.10.0"
+    "nodemon": "^3.0.2"
   }
 }
