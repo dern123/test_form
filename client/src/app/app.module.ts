@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {APP_BASE_HREF} from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { HomeComponent } from './pages/client/home/home.component';
       multi: true,
       useClass: TokenInterceptor,
     },
+    // {provide: APP_BASE_HREF, useValue: '/browser'},
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 const express = require("express");
 const session = require('express-session');
+const path = require('path');
 const mongoose = require("mongoose");
 const cors = require('cors');
 const config = require('config');
@@ -17,7 +18,7 @@ app.use(bodyParser.json({limit: "100mb"}))
 app.use(bodyParser.urlencoded({limit: "100mb", extended: true, parameterLimit:100000}))
 app.use(cors());
 app.get("/",(req,res) => {
-    res.redirect("/home")
+    res.redirect("/auth/login")
   })
 app.use(express.static(__dirname + '/client/src'));
 
@@ -42,8 +43,20 @@ app.use(session(({
 //AUTH
   require("./server/routes/auth/index.routes").configure(app);
 
-  console.log("!!!!!!!!!!!")
-  function start(){
+  console.log("!!!!!!!!!!!");
+  if(process.env.NODE_ENV === 'production'){
+
+    app.use('/', express.static(path.join(__dirname,'public/browser')))
+  
+    app.get('*', (req,res) => {
+      res.sendFile(path.resolve(__dirname, 'public/browser/index.html'));
+    } )
+    // require("./server/middlewares/socket.middleware").connect(server, true)
+  }
+  else{
+    // require("./server/middlewares/socket.middleware").connect(server, false)
+  }
+ async function start(){
     try{
         mongoose.connect(mongoUrl, {});
         console.log("AAAAAAAAAAAA")
