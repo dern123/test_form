@@ -26,7 +26,7 @@
     "dev": "cross-env NODE_ENV=development concurrently \"npm start --prefix client\" \"nodemon app.js\"",
     "serv": "cross-env NODE_ENV=development concurrently  \"nodemon app.js \"",
     "start": "cross-env NODE_ENV=production concurrently  \"node app.js \"",
-    "build": "npm install && npm run build --prefix client"
+    "build": "npm install && npm install -g @angular/cli && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
   "homepage": "https://github.com/dern123/test_form#readme",
   "description": "",
   "devDependencies": {
+    "@angular/cli": "^17.0.5",
     "concurrently": "^8.2.2",
     "nodemon": "^3.0.2"
   }
